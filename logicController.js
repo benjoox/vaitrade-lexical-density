@@ -1,4 +1,7 @@
 const { nonLexicals } = require('./database/seed.json')
+const { convertToArrayOfWords } = require('./_utils');
+
+const convertArrayToLowerCase = arr => arr.map(el => el.toLowerCase())
 /* 
 * Given a string of data returns the 
 * lexical density of the string fixed 
@@ -8,29 +11,30 @@ const { nonLexicals } = require('./database/seed.json')
 *	return float
 */
 const overallScore = line => {
-	const lineArray = line.toLowerCase().split(" ")
+    const lineArray = convertToArrayOfWords(line)
+    const lowerCaseNonLexicals = convertArrayToLowerCase(nonLexicals)
+
     const lexicals = lineArray.filter(el => {
-        return !nonLexicals.includes(el)
+        return !lowerCaseNonLexicals.includes(el.toLowerCase())
     })
-    return parseFloat(lexicals.length / lineArray.length.toFixed(2))
+    return parseFloat((lexicals.length / lineArray.length).toFixed(2))
 }
 
 /* 
 * NOTE !! I have made an assumption that each 
-* sentence is a string that ends with a dot 
+* sentence is a series of strings that ends with a dot 
 *
 * Given a string of data returns the 
-* lexical density of each sentence fixed 
+* lexical density of each sentence with
 * two decimal points
 *	
-
 *  	input string
 *	return Array
 */
 
 const sentenceScore = data => {
-    const lines = data.split(".")
-    return lines.map(line =>  overallScore(line, nonLexicals))
+    const lines = data.split(".").filter(el => el !== "")
+    return lines.map(line =>  overallScore(line))
 }
 
 module.exports = {
