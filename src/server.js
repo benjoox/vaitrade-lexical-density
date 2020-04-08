@@ -1,35 +1,14 @@
 const express = require('express');
-const { overallScore, sentenceScore } = require('./controllers/logicController')
-const validate = require('./middlewares/validator')
+const complexity = require('./routers/complexity')
+
 const app = express();
 
-const VERBOSE = 'verbose'
-app.get('/complexity', validate, (req, res) => {
- 	try {
-		const { query } = req;
-		if(query.mode === VERBOSE) {
-			res.send({
-				"data":{
-					"overall_ld": overallScore(query.data),
-					"sentence_ld": sentenceScore(query.data)
-				}
-			})
-		} else {
-			res.send({
-				"data":{
-					"overall_ld": overallScore(query.data)
-				}
-			})
-		}
-	}
-	catch (error) {
-		res.status(401).send({
-			message: "Server error",
-			error: error.message
-		})
-	}		
-})
+app.use('/complexity', complexity)
 
+app.use('/*', (req, res) => res.status(400).send({ 
+	sucess: false, 
+	message: 'The requested resource does not exist'
+}))
 app.use(function (err, req, res, next) {
 	console.error(err.stack)
 	res.status(200).send({ sucess: false, message: err.message })
