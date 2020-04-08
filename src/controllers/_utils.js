@@ -13,7 +13,10 @@ const convertToArrayOfWords = data => {
     .filter(el => !isSpecialCharacter(el)) 
 }
 
+const convertArrayToLowerCase = arr => arr.map(el => el.toLowerCase())
+
 module.exports = {
     convertToArrayOfWords,
-    isSpecialCharacter 
+    isSpecialCharacter,
+    convertArrayToLowerCase 
 }

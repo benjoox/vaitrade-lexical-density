@@ -1,7 +1,6 @@
 const { nonLexicals } = require('../database/seed.json')
-const { convertToArrayOfWords } = require('./_utils');
+const { convertToArrayOfWords, convertArrayToLowerCase } = require('./_utils');
 
-const convertArrayToLowerCase = arr => arr.map(el => el.toLowerCase())
 /* 
 * Given a string of data returns the 
 * lexical density of the string fixed 
