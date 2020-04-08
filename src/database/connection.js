@@ -1,8 +1,8 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
 
-const dbName = process.env.DB_NAME || 'vaitrade'
-const dbEndpoint = process.env.DB_ENDPOINT || 'mongodb://localhost:27017'
+const dbName = process.env.DB_NAME
+const dbEndpoint = process.env.DB_ENDPOINT
 
 mongoose.connect(`${dbEndpoint}/${dbName}`, {
 	useNewUrlParser: true, 
