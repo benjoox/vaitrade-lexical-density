@@ -13,10 +13,7 @@ const convertArrayToLowerCase = arr => arr.map(el => el.toLowerCase())
 const overallScore = line => {
     const lineArray = convertToArrayOfWords(line)
     const lowerCaseNonLexicals = convertArrayToLowerCase(nonLexicals)
-
-    const lexicals = lineArray.filter(el => {
-        return !lowerCaseNonLexicals.includes(el.toLowerCase())
-    })
+    const lexicals = lineArray.filter(el => !lowerCaseNonLexicals.includes(el.toLowerCase()))
     return parseFloat((lexicals.length / lineArray.length).toFixed(2))
 }
 
@@ -34,9 +31,7 @@ const overallScore = line => {
 
 const sentenceScore = data => {
     const lines = data.split(".").filter(el => el !== "")
-    return lines.map(line => {
-        console.log('line is ', line)
-        return overallScore(line)})
+    return lines.map(line => overallScore(line))
 }
 
 module.exports = {

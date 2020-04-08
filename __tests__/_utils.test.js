@@ -1,4 +1,4 @@
-const { isSpecialCharacter, convertToArrayOfWords } = require('../_utils')
+const { isSpecialCharacter, convertToArrayOfWords } = require('../src/controllers/_utils')
 const specialCharacters = ['!', '@', '#', '$', '%', '^', '&','*','(',')',',','.','?','"',':', '{', '}' ,'|', '<','>', ""]
 
 describe('isSpecialCharacter should', () => {

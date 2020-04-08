@@ -1,11 +1,12 @@
 const { overallScore, sentenceScore } = require('../src/controllers/logicController')
 
-jest.mock('../database/seed.json', () => ({ nonLexicals: [ 'this', 'an', 'WiTh' ] }), { virtual: true   })
+jest.mock('../src/database/seed.json', () => ({ nonLexicals: [ 'this', 'an', 'WiTh' ] }), { virtual: true })
 
 describe('overallScore function should', () => {
   beforeEach(() => {
     jest.resetModules();
   });
+  
   test('return the density correctly', () => {
     const testInput = 'This is an input test'
     const expectedResult = 3 / 5;
