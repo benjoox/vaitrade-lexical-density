@@ -12,7 +12,10 @@ const { convertToArrayOfWords, convertArrayToLowerCase } = require('./_utils');
 const overallScore = line => {
     const lineArray = convertToArrayOfWords(line)
     const lowerCaseNonLexicals = convertArrayToLowerCase(nonLexicals)
-    const lexicals = lineArray.filter(el => !lowerCaseNonLexicals.includes(el.toLowerCase()))
+    
+    const lexicals = lineArray.filter(el => 
+        !lowerCaseNonLexicals.includes(el.toLowerCase())
+    )
     return parseFloat((lexicals.length / lineArray.length).toFixed(2))
 }
 

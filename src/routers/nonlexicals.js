@@ -9,7 +9,8 @@ router.put('/', authenticator, (req, res) => {
 		res.send({
             "success": " false/true based on the return of the function",
             "data":{
-                "valueUpdated": "to be implemented" // TODO: implement the updating of the resource
+				// TODO: implement the updating of the resource
+                "valueUpdated": "TODO: To be implemented - nonLexicalCollection.update( { _id }, { ... })" 
             }
         })
 	}
