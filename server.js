@@ -1,5 +1,5 @@
 const express = require('express');
-
+const { overallScore, sentenceScore } = require('./logicController')
 const app = express();
 
 const VERBOSE = 'verbose'
@@ -9,16 +9,15 @@ app.get('/complexity', (req, res) => {
 		if(query.mode === VERBOSE) {
 			res.send({
 				"data":{
-					"overall_ld": 0.42
-					},
-				"query": query	
+					"overall_ld": overallScore(query.data),
+					"sentence_ld": sentenceScore(query.data)
+				}
 			})
 		} else {
 			res.send({
 				"data":{
-					"overall_ld": 0.42
-					},
-				"query": query	
+					"overall_ld": overallScore(query.data)
+				}
 			})
 		}
 	}
