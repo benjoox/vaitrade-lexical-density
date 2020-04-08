@@ -1,7 +1,9 @@
 const express = require('express');
+const authenticator = require('../middlewares/authenticator')
+
 const router = express.Router()
 
-router.put('/', (req, res) => {
+router.put('/', authenticator, (req, res) => {
  	try {
 		res.send({
             "success": "false/true based on the return of the function",
