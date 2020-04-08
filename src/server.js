@@ -1,9 +1,10 @@
 const express = require('express');
-const { overallScore, sentenceScore } = require('./logicController')
+const { overallScore, sentenceScore } = require('./controllers/logicController')
+const validate = require('./middlewares/validator')
 const app = express();
 
 const VERBOSE = 'verbose'
-app.get('/complexity', (req, res) => {
+app.get('/complexity', validate, (req, res) => {
  	try {
 		const { query } = req;
 		if(query.mode === VERBOSE) {
@@ -28,6 +29,11 @@ app.get('/complexity', (req, res) => {
 		})
 	}		
 })
+
+app.use(function (err, req, res, next) {
+	console.error(err.stack)
+	res.status(200).send({ sucess: false, message: err.message })
+  })
 
 
 const PORT = process.env.PORT || 3000;

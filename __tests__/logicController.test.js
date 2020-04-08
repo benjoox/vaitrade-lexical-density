@@ -1,4 +1,4 @@
-const { overallScore, sentenceScore } = require('../logicController')
+const { overallScore, sentenceScore } = require('../src/controllers/logicController')
 
 jest.mock('../database/seed.json', () => ({ nonLexicals: [ 'this', 'an', 'WiTh' ] }), { virtual: true   })
 

@@ -1,4 +1,4 @@
-const { nonLexicals } = require('./database/seed.json')
+const { nonLexicals } = require('../database/seed.json')
 const { convertToArrayOfWords } = require('./_utils');
 
 const convertArrayToLowerCase = arr => arr.map(el => el.toLowerCase())
@@ -34,7 +34,9 @@ const overallScore = line => {
 
 const sentenceScore = data => {
     const lines = data.split(".").filter(el => el !== "")
-    return lines.map(line =>  overallScore(line))
+    return lines.map(line => {
+        console.log('line is ', line)
+        return overallScore(line)})
 }
 
 module.exports = {
