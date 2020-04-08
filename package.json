@@ -1,0 +1,26 @@
+{
+  "name": "vaitrade",
+  "version": "0.0.1",
+  "description": "Code challenge for the VAI Trade",
+  "main": "index.js",
+  "scripts": {
+    "start": "node",
+    "dev": "nodemon index.js",
+    "test": "test"
+  },
+  "keywords": [
+    "code",
+    "challenge",
+    "api",
+    "lexical",
+    "density"
+  ],
+  "author": "Benyamin Abedian",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
