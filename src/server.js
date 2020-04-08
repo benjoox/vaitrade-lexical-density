@@ -1,9 +1,11 @@
 const express = require('express');
 const complexity = require('./routers/complexity')
+const nonlexicals = require('./routers/nonlexicals')
 
 const app = express();
 
 app.use('/complexity', complexity)
+app.use('/nonlexicals', nonlexicals)
 
 app.use('/*', (req, res) => res.status(400).send({ 
 	sucess: false, 
