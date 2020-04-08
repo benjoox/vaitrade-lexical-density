@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node",
     "dev": "nodemon index.js",
-    "test": "test"
+    "test": "jest"
   },
   "keywords": [
     "code",
@@ -18,7 +18,8 @@
   "author": "Benyamin Abedian",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jest": "^25.2.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

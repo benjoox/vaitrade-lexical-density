@@ -1,3 +1,4 @@
+const { nonLexicals } = require('./database/seed.json')
 /* 
 * Given a string of data returns the 
 * lexical density of the string fixed 
@@ -7,10 +8,11 @@
 *	return float
 */
 const overallScore = line => {
-	const lineArray = line.split(" ")
-	console.log('the line is ', lineArray)
-    const lexicals = lineArray.filter(el => !nonLexicalCollection.includes(el))
-    return parseFloat(lexicals.length / line.length).toFixed(2)
+	const lineArray = line.toLowerCase().split(" ")
+    const lexicals = lineArray.filter(el => {
+        return !nonLexicals.includes(el)
+    })
+    return parseFloat(lexicals.length / lineArray.length.toFixed(2))
 }
 
 /* 
@@ -28,7 +30,7 @@ const overallScore = line => {
 
 const sentenceScore = data => {
     const lines = data.split(".")
-    return lines.map(line =>  overallScore(line, nonLexicalCollection))
+    return lines.map(line =>  overallScore(line, nonLexicals))
 }
 
 module.exports = {
@@ -36,39 +38,3 @@ module.exports = {
     overallScore
 }
 
-const nonLexicalCollection = [ 
-	"is",
-	"have",
-	"and",
-	"although",
-	"or",
-	"that",
-	"when",
-	"while",
-	"a",
-	"either",
-	"more",
-	"much",
-	"neither",
-	"my",
-	"that",
-	"the",
-	"as",
-	"no",
-	"nor",
-	"not",
-	"at",
-	"between",
-	"in",
-	"of",
-	"without",
-	"I",
-	"you",
-	"he",
-	"she",
-	"it",
-	"we",
-	"they",
-	"anybody",
-	"one"
-	]
